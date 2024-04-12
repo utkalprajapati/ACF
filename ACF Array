@@ -1,0 +1,29 @@
+ACF image array
+------------------
+
+<?php $nextimage = get_sub_field('image');?>
+<?php if( !empty( $nextimage ) ): ?>
+    <img src="<?php echo esc_url($nextimage['url']); ?>" alt="<?php echo esc_attr($nextimage['alt']); ?>">
+<?php endif; ?>
+
+
+ACF Contact Form
+------------------
+
+<?php if( get_sub_field('contact_form_shortcode') ): ?>
+    <?php $form = get_sub_field('contact_form_shortcode');?>
+    <div class="contact-data">
+     <?php echo do_shortcode($form);?>
+    </div>
+<?php endif; ?>
+
+
+ACF Link 
+-------------
+<?php $link = get_sub_field('learn_more_about_our_designs_url');
+if( $link ): ?>
+    <?php  $link_url = $link['url'];
+            $link_title = $link['title'];
+            $link_target = $link['target'] ? $link['target'] : '_self';?>
+        <a class="main-btn" href="<?php echo esc_url( $link_url ); ?>" target="<?php echo esc_attr( $link_target ); ?>"><?php echo esc_html( $link_title ); ?></a>
+<?php endif; ?>
